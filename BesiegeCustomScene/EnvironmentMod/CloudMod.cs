@@ -12,7 +12,7 @@ namespace BesiegeCustomScene
     {
         void Start()
         {
-            Commands.RegisterCommand("CloudSize", (args, notUses) =>
+            Commands.RegisterCommand("VP_CloudSize", (args, notUses) =>
             {
                 if (args.Length < 1)
                 {

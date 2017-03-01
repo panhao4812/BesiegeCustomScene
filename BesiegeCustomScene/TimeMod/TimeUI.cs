@@ -234,11 +234,12 @@ namespace BesiegeCustomScene
             if (!EnableCommond) return;
             Commands.RegisterCommand("VP_Help", (args, notUses) =>
              {
-                 Debug.Log("VP_Help");
                  Debug.Log("VP_GetCenter");
                  Debug.Log("VP_GetAssets name");
                  Debug.Log("VP_GetLevelInfo");
                  Debug.Log("VP_GetShader");
+                 Debug.Log("VP_GetTexture");
+                 Debug.Log("VP_CloudSize");
                  return "\n";
              }, "Get Help");
             Commands.RegisterCommand("VP_GetLevelInfo", (args, notUses) =>

@@ -23,7 +23,8 @@ namespace BesiegeCustomScene
         public static string BundlePath = "assets/standard assets/besiegecustomscene/";
         public static Mesh MeshFormBundle(string Objname)
         {
-            return  iteratorVariable1.LoadAsset<Mesh>(BundlePath+"Mesh/"+ Objname +".obj");
+            Mesh mesh=  iteratorVariable1.LoadAsset<Mesh>(BundlePath+"Mesh/"+ Objname +".obj");          
+            return mesh;
         }
         public static Texture TextureFormBundle(string Objname)
         {

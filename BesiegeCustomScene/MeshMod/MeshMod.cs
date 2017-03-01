@@ -43,7 +43,7 @@ namespace BesiegeCustomScene
                     string[] chara = str.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
                     if (chara.Length > 2)
                     {
-                        #region Meshes
+                        #region Mesheses
                         if (chara[0] == "Meshes")
                         {
                             if (chara[1] == "size" || chara[1] == "Size")
@@ -57,6 +57,8 @@ namespace BesiegeCustomScene
                                 LoadMeshWithOutCastShadow();//对于带烘焙贴图的和模型过大的这项必须取消
                             }
                         }
+                        #endregion 
+                        #region Meshseries
                         else if (chara[0] == "Meshseries")
                         {
                             int start = Convert.ToInt32(chara[1]);
@@ -125,6 +127,35 @@ namespace BesiegeCustomScene
                                 for (int i = start; i <= end; i++)
                                 {
                                     meshes[i].GetComponent<MeshRenderer>().material.SetFloat(chara[4], Convert.ToSingle(chara[5]));
+                                }
+                            }
+                            else if (chara[3] == "settexture")
+                            {
+                                for (int i = start; i <= end; i++)
+                                {
+                                    meshes[i].GetComponent<MeshRenderer>().material.SetTexture(chara[4], GeoTools.LoadTexture(chara[5]));
+                                }
+                            }
+                            else if (chara[3] == "setcolor")
+                            {
+                                for (int i = start; i <= end; i++)
+                                {
+                                    meshes[i].GetComponent<MeshRenderer>().material.SetColor(chara[4], new Color(
+                            Convert.ToSingle(chara[5]),
+                            Convert.ToSingle(chara[6]),
+                            Convert.ToSingle(chara[7]),
+                            Convert.ToSingle(chara[8])));
+                                }
+                            }
+                            else if (chara[3] == "setvector")
+                            {
+                                for (int i = start; i <= end; i++)
+                                {
+                                    meshes[i].GetComponent<MeshRenderer>().material.SetVector(chara[4], new Vector4(
+                        Convert.ToSingle(chara[5]),
+                        Convert.ToSingle(chara[6]),
+                        Convert.ToSingle(chara[7]),
+                        Convert.ToSingle(chara[8])));
                                 }
                             }
                             else if (chara[3] == "texture")
@@ -218,6 +249,8 @@ namespace BesiegeCustomScene
                                 }
                             }
                         }
+                        #endregion
+                        #region Mesh
                         else if (chara[0] == "Mesh")
                         {
                             int i = Convert.ToInt32(chara[1]);
@@ -526,7 +559,7 @@ namespace BesiegeCustomScene
                     }
                 }
                 srd.Close();
-             //   for (int i = 0; i < this.meshes.Length; i++){GeoTools.MeshFilt(ref this.meshes[i]);}
+                //   for (int i = 0; i < this.meshes.Length; i++){GeoTools.MeshFilt(ref this.meshes[i]);}
                 Debug.Log("ReadMeshObj Completed!");
             }
             catch (Exception ex)

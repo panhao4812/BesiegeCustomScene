@@ -15,7 +15,7 @@ namespace BesiegeCustomScene
         private bool isSimulating = false;
         //UI
         private int _FontSize = 15;
-        private Rect windowRect = new Rect(Screen.width *0.05f, Screen.height *0.908f, 585f, 50f);
+        private Rect windowRect = new Rect(Screen.width * 0.05f, Screen.height * 0.908f, 585f, 50f);
         private int windowID = spaar.ModLoader.Util.GetWindowID();
         private bool ShowGUI = true;
         private List<string> _ButtonName = new List<string>();
@@ -28,7 +28,7 @@ namespace BesiegeCustomScene
             _ButtonName.Clear(); _SceneName.Clear();
             _FontSize = (int)(Screen.width * 0.005 + 8);
             ShowGUI = true;
-            windowRect = new Rect(Screen.width * 0.05f, Screen.height*0.908f, 585f, 50f);
+            windowRect = new Rect(Screen.width * 0.05f, Screen.height * 0.908f, 585f, 50f);
             _DisplayUI = KeyCode.F9;
             _ReloadUI = KeyCode.F5;
         }
@@ -90,7 +90,7 @@ namespace BesiegeCustomScene
                             {
                                 windowRect.x = Convert.ToSingle(chara[2]);
                                 windowRect.y = Convert.ToSingle(chara[3]);
-                            }                     
+                            }
                         }
                     }
                 }
@@ -154,7 +154,7 @@ namespace BesiegeCustomScene
                         if (chara[0] == "Camera")
                         {
                             if (chara[1] == "farClipPlane")
-                            {
+                            {                                                                                        
                                 try
                                 {
                                     GameObject.Find("Main Camera").GetComponent<Camera>().farClipPlane = Convert.ToInt32(chara[2]);
@@ -202,6 +202,23 @@ namespace BesiegeCustomScene
                                     }
                                 }
                             }
+                            else if (chara[1] == "SSAO")
+                            {
+                                if (chara[2] == "OFF" )
+                                {
+                                    Debug.Log("SSAO OFF");
+                                    OptionsMaster.SSAO = true;
+                                    FindObjectOfType<ToggleAO>().Set();
+                                }
+                                else if (chara[2] == "ON"  )
+                                {
+                                    Debug.Log("SSAO ON");
+                                    OptionsMaster.SSAO = false;
+                                    FindObjectOfType<ToggleAO>().Set();
+                                }
+
+                            }
+
                         }
                         #endregion
                     }
@@ -258,7 +275,7 @@ namespace BesiegeCustomScene
         }
         /// ///////////////////////////////////////
         void FixedUpdate()
-        {        
+        {
             if (StatMaster.isSimulating && isSimulating == false)
             {
                 isSimulating = true; this.ShowGUI = false;
@@ -354,7 +371,7 @@ namespace BesiegeCustomScene
                 GameObject.Find("WorldBoundaryLeft").transform.GetChild(0).GetComponent<Renderer>().enabled = false;
                 GameObject.Find("WorldBoundaryRight").transform.GetChild(0).GetComponent<Renderer>().enabled = false;
             }
-            catch { }     
+            catch { }
         }
         public void UnhideFloorBig()
         {
