@@ -130,7 +130,7 @@ namespace BesiegeCustomScene
 
             if (MSnow == null) return;
             if (MSnow.Length <= 0) return;
-            Debug.Log("ClearSnow");
+           if(SnowSize>0) Debug.Log("ClearSnow");
             for (int i = 0; i < MSnow.Length; i++)
             {
                 Destroy(MSnow[i]);

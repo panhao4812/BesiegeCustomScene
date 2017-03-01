@@ -145,7 +145,7 @@ namespace BesiegeCustomScene
             ClearFloater();
             if (Mwater == null) return;
             if (Mwater.Length <= 0) return;
-            Debug.Log("ClearWater");
+            if (WaterSize > 0) Debug.Log("ClearWater");
             gameObject.GetComponent<Prop>().WaterTemp.SetActive(false);
             try
             {

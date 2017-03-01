@@ -178,7 +178,7 @@ namespace BesiegeCustomScene
             // step = 0;
             if (clouds == null) return;
             if (clouds.Length <= 0) return;
-            Debug.Log("ClearCloud");
+            if (CloudSize > 0) Debug.Log("ClearCloud");
             for (int i = 0; i < clouds.Length; i++)
             {
                 Destroy(clouds[i]);

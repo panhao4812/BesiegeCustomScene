@@ -70,7 +70,7 @@
     <Compile Include="Global\SceneUI.cs" />
     <Compile Include="Global\BesiegeCustomScene.cs" />
     <Compile Include="TimeMod\TimeUI.cs" />
-    <Compile Include="MeshMod\TriggerUI.cs" />
+    <Compile Include="MeshMod\TriggerMod.cs" />
     <Compile Include="EnvironmentMod\WaterMod.cs" />
     <Compile Include="Water4\Displace.cs" />
     <Compile Include="Water4\GerstnerDisplace.cs" />

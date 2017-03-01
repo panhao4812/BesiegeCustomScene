@@ -172,7 +172,7 @@ namespace BesiegeCustomScene
                                     for (int i = start; i <= end; i++)
                                     {
                                         meshes[i].GetComponent<MeshRenderer>().material = new Material(GameObject.Find(chara[4]).GetComponent<Renderer>().material);
-                                        Debug.Log(meshes[i].GetComponent<MeshRenderer>().material.shader.name);
+                                        // Debug.Log(meshes[i].GetComponent<MeshRenderer>().material.shader.name);
                                     }
                                 }
                                 catch (Exception ex)
@@ -190,7 +190,7 @@ namespace BesiegeCustomScene
                                         int index = Convert.ToInt32(chara[4]);
                                         meshes[i].GetComponent<MeshRenderer>().material =
                                             gameObject.GetComponent<Prop>().MaterialTemp[index].GetComponent<Renderer>().material;
-                                        Debug.Log(meshes[i].GetComponent<MeshRenderer>().material.shader.name);
+                                        // Debug.Log(meshes[i].GetComponent<MeshRenderer>().material.shader.name);
                                     }
                                 }
                                 catch (Exception ex)
@@ -387,7 +387,7 @@ namespace BesiegeCustomScene
                                 try
                                 {
                                     meshes[i].GetComponent<MeshRenderer>().material = new Material(GameObject.Find(chara[3]).GetComponent<Renderer>().material);
-                                    Debug.Log(meshes[i].GetComponent<MeshRenderer>().material.shader.name);
+                                    //  Debug.Log(meshes[i].GetComponent<MeshRenderer>().material.shader.name);
                                 }
                                 catch (Exception ex)
                                 {
@@ -414,7 +414,7 @@ namespace BesiegeCustomScene
                                     int index = Convert.ToInt32(chara[3]);
                                     meshes[i].GetComponent<MeshRenderer>().material =
                                         gameObject.GetComponent<Prop>().MaterialTemp[index].GetComponent<Renderer>().material;
-                                    Debug.Log(meshes[i].GetComponent<MeshRenderer>().material.shader.name);
+                                    //     Debug.Log(meshes[i].GetComponent<MeshRenderer>().material.shader.name);
                                 }
                                 catch (Exception ex)
                                 {
@@ -573,7 +573,7 @@ namespace BesiegeCustomScene
         {
             if (meshes == null) return;
             if (meshes.Length <= 0) return;
-            Debug.Log("ClearMeshes");
+            if (MeshSize > 0) Debug.Log("ClearMeshes");
             for (int i = 0; i < meshes.Length; i++)
             {
                 UnityEngine.Object.Destroy(meshes[i]);

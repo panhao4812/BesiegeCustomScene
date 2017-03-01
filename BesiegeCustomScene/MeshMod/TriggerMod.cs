@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace BesiegeCustomScene
 {
-    public class TriggerUI : MonoBehaviour
+    public class TriggerMod : MonoBehaviour
     {
         void Start()
         {
@@ -194,7 +194,7 @@ namespace BesiegeCustomScene
         {
             if (meshtriggers == null) return;
             if (meshtriggers.Length <= 0) return;
-            Debug.Log("ClearTriggers");
+            if (TriggerSize > 0) Debug.Log("ClearTriggers");
             for (int i = 0; i < meshtriggers.Length; i++)
             {
                 Destroy(meshtriggers[i]);

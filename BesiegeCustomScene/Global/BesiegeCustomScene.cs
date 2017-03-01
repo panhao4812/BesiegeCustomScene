@@ -22,7 +22,7 @@ namespace BesiegeCustomScene
             temp.AddComponent<SceneUI>();
             temp.AddComponent<TimeUI>();
             temp.AddComponent<MeshMod>();
-            temp.AddComponent<TriggerUI>();
+            temp.AddComponent<TriggerMod>();
             temp.AddComponent<SnowMod>();
             temp.AddComponent<CloudMod>();
             temp.AddComponent<WaterMod>();

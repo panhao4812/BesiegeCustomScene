@@ -242,7 +242,7 @@ namespace BesiegeCustomScene
             catch { }
             try
             {
-                this.gameObject.GetComponent<TriggerUI>().ClearTrigger();
+                this.gameObject.GetComponent<TriggerMod>().ClearTrigger();
             }
             catch { }
             try
@@ -267,7 +267,7 @@ namespace BesiegeCustomScene
                 HideFloorBig();
                 this.ReadScene(SceneName);
                 try { this.gameObject.GetComponent<MeshMod>().ReadScene(SceneName); } catch { }
-                try { this.gameObject.GetComponent<TriggerUI>().ReadScene(SceneName); } catch { }
+                try { this.gameObject.GetComponent<TriggerMod>().ReadScene(SceneName); } catch { }
                 try { this.gameObject.GetComponent<WaterMod>().ReadScene(SceneName); } catch { }
                 try { this.gameObject.GetComponent<CloudMod>().ReadScene(SceneName); } catch { }
                 try { this.gameObject.GetComponent<SnowMod>().ReadScene(SceneName); } catch { }
