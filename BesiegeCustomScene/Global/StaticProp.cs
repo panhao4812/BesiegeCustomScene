@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
@@ -23,13 +24,13 @@ namespace BesiegeCustomScene
         public static string BundlePath = "assets/standard assets/besiegecustomscene/";
         public static Mesh MeshFormBundle(string Objname)
         {
-            Mesh mesh=  iteratorVariable1.LoadAsset<Mesh>(BundlePath+"Mesh/"+ Objname +".obj");          
+            Mesh mesh = iteratorVariable1.LoadAsset<Mesh>(BundlePath + "Mesh/" + Objname + ".obj");
             return mesh;
         }
         public static Texture TextureFormBundle(string Objname)
         {
-            Texture te= iteratorVariable1.LoadAsset<Texture>(BundlePath + "Texture/" + Objname + ".jpg");
-            if(te==null)te= iteratorVariable1.LoadAsset<Texture>(BundlePath + "Texture/" + Objname + ".png");
+            Texture te = iteratorVariable1.LoadAsset<Texture>(BundlePath + "Texture/" + Objname + ".jpg");
+            if (te == null) te = iteratorVariable1.LoadAsset<Texture>(BundlePath + "Texture/" + Objname + ".png");
             return te;
         }
         public GameObject GetObjectInScene(string ObjectName)
@@ -54,7 +55,7 @@ namespace BesiegeCustomScene
         public static double t = 5;
         void FixedUpdate()
         {
-            if (Isstart > 5 * t) return;
+            if (Isstart > 6 * t) return;
             try
             {
                 if (Isstart == 1 * t)
@@ -65,8 +66,8 @@ namespace BesiegeCustomScene
                         iteratorVariable1 = iteratorVariable0.assetBundle;
                         if (iteratorVariable1 != null)
                         {
-                          //  string[] names = iteratorVariable1.GetAllAssetNames();
-                          //  for (int i = 0; i < names.Length; i++) { Debug.Log(names[i]); }
+                              string[] names = iteratorVariable1.GetAllAssetNames();
+                              for (int i = 0; i < names.Length; i++) { Debug.Log(names[i]); }
                         }
                     }
                     catch (Exception ex)
@@ -76,11 +77,11 @@ namespace BesiegeCustomScene
                     }
 
                 }
-                if (Isstart == 2*t)
+                if (Isstart == 2 * t)
                 {
                     StartedScene = SceneManager.GetActiveScene().name;
                     GeoTools.OpenScene("TITLE SCREEN");
-                    CloudTemp = GetObjectInScene("CLoud");             
+                    CloudTemp = GetObjectInScene("CLoud");
                     ParticleSystemRenderer psr = CloudTemp.GetComponent<ParticleSystemRenderer>();
                     psr.receiveShadows = false;
                     psr.sharedMaterial.mainTexture = iteratorVariable1.LoadAsset<Texture>(
@@ -92,62 +93,65 @@ namespace BesiegeCustomScene
                     ps.startSpeed = 0.8f;
                     ps.maxParticles = 15;
                     CloudTemp.name = "CloudTemp";
-                    DontDestroyOnLoad(CloudTemp);                   
-                    CloudTemp.SetActive(false);                   
+                    DontDestroyOnLoad(CloudTemp);
+                    CloudTemp.SetActive(false);
                     Debug.Log("Get " + CloudTemp.name + " Successfully");
-                }           
+                }
                 if (Isstart == 3 * t)
                 {
-                    GameObject WM0 = GameObject.CreatePrimitive(PrimitiveType.Plane);
-                    WM0.GetComponent<Renderer>().material.shader = Shader.Find("Standard");
-                    WM0.GetComponent<Renderer>().material.SetFloat("_Glossiness", 1);
-                    WM0.GetComponent<Renderer>().material.mainTexture = GeoTools.LoadTexture("WM0");
-                    WM0.name = "WM0Temp";
-                    DontDestroyOnLoad(WM0);
-                    WM0.SetActive(false);
-                    this.MaterialTemp.Add(WM0);
-                    Debug.Log("Get " + WM0.name + " Successfully");
-
-                    GameObject WM1 = GameObject.CreatePrimitive(PrimitiveType.Plane);
-                    WM1.GetComponent<Renderer>().material.shader = Shader.Find("Standard");
-                    WM1.GetComponent<Renderer>().material.SetFloat("_Glossiness", 1);
-                    WM1.GetComponent<Renderer>().material.mainTexture = GeoTools.LoadTexture("WM1");
-                    WM1.name = "WM1Temp";
-                    DontDestroyOnLoad(WM1);                 
-                    WM1.SetActive(false);
-                    this.MaterialTemp.Add(WM1);
-                    Debug.Log("Get " + WM1.name + " Successfully");
+                    for(int i = 0; i <= 10; i++) {
+                        string jpgName = "WM" + i.ToString();
+                        if (! File.Exists(GeoTools.TexturePath + jpgName + ".jpg")) break;
+                    GameObject WMTemp = GameObject.CreatePrimitive(PrimitiveType.Plane);
+                    WMTemp.GetComponent<Renderer>().material.shader = Shader.Find("Standard");
+                    WMTemp.GetComponent<Renderer>().material.SetFloat("_Glossiness", 1);
+                    WMTemp.GetComponent<Renderer>().material.mainTexture = GeoTools.LoadTexture(jpgName);
+                    WMTemp.name = jpgName + "Temp";
+                    DontDestroyOnLoad(WMTemp);
+                    WMTemp.SetActive(false);
+                    this.MaterialTemp.Add(WMTemp);
+                    Debug.Log("Get " + WMTemp.name + " Successfully");
+                    }                   
                 }
-               
+
                 if (Isstart == 4 * t)
-                {                          
+                {
                     WaterTemp = new GameObject();
                     WaterTemp.AddComponent<WaterBase>();
                     WaterTemp.AddComponent<SpecularLighting>();
                     WaterTemp.AddComponent<PlanarReflection>();
-                    WaterTemp.AddComponent<GerstnerDisplace>();                  
+                    WaterTemp.AddComponent<GerstnerDisplace>();
                     TileTemp = iteratorVariable1.LoadAsset<GameObject>(
                         "assets/standard assets/environment/water/water4/prefabs/TileOnly.prefab");
                     TileTemp.AddComponent<WaterTile>();
                     TileTemp.GetComponent<WaterTile>().reflection = WaterTemp.GetComponent<PlanarReflection>();
-                    TileTemp.GetComponent<WaterTile>().waterBase = WaterTemp.GetComponent<WaterBase>();                 
+                    TileTemp.GetComponent<WaterTile>().waterBase = WaterTemp.GetComponent<WaterBase>();
                     Material mat = TileTemp.GetComponent<Renderer>().material;
-                    GeoTools.ResetWaterMaterial(ref mat);               
+                    GeoTools.ResetWaterMaterial(ref mat);
                     UnityEngine.Object.DontDestroyOnLoad(TileTemp);
                     TileTemp.name = "TileTemp";
-                    TileTemp.SetActive(false);                
+                    TileTemp.SetActive(false);
                     WaterTemp.GetComponent<WaterBase>().sharedMaterial = TileTemp.GetComponent<Renderer>().material;
                     UnityEngine.Object.DontDestroyOnLoad(WaterTemp);
                     WaterTemp.name = "WaterTemp";
-                    WaterTemp.SetActive(false);              
-                    Debug.Log("Get "+ TileTemp.name+" Successfully");
+                    WaterTemp.SetActive(false);
+                    Debug.Log("Get " + TileTemp.name + " Successfully");
+                }
+                if (Isstart == 5 * t)
+                {
+                    SnowTemp= iteratorVariable1.LoadAsset<GameObject>(
+                        "assets/standard assets/particlesystems/prefabs/duststom2.prefab");
+                    SnowTemp.name = "SnowTemp";
+                    SnowTemp.SetActive(false);
+                    UnityEngine.Object.DontDestroyOnLoad(SnowTemp);
+                    Debug.Log("Get " + SnowTemp.name + " Successfully");
                 }
             }
             catch (Exception ex)
             {
                 Debug.Log(ex.ToString());
             }
-            if (Isstart <= 5 * t) Isstart++;
+            if (Isstart <= 6 * t) Isstart++;
         }
     }
 }

@@ -109,7 +109,7 @@ namespace BesiegeCustomScene
                 if (SnowSize <= 0) return;
                 if (this.gameObject.GetComponent<Prop>().SnowTemp == null) return;                
                 MSnow = new GameObject[SnowSize];
-                for (int i = 0; i <= MSnow.Length; i++)
+                for (int i = 0; i < MSnow.Length; i++)
                 {
                     MSnow[i] = (GameObject)Instantiate(gameObject.GetComponent<Prop>().SnowTemp);
                     MSnow[i].name = "snow" + i.ToString();

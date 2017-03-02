@@ -235,7 +235,7 @@ namespace BesiegeCustomScene
             Commands.RegisterCommand("VP_Help", (args, notUses) =>
              {
                  Debug.Log("VP_GetCenter");
-                 Debug.Log("VP_GetAssets name");
+                 Debug.Log("VP_GetAssets");
                  Debug.Log("VP_GetLevelInfo");
                  Debug.Log("VP_GetShader");
                  Debug.Log("VP_GetTexture");
