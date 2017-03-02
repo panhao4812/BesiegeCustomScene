@@ -828,6 +828,11 @@ namespace BesiegeCustomScene
         }
         public static void GetCenter()
         {
+            if (StatMaster.isSimulating)
+            {
+                Debug.Log("The method will not work if is simulating!");
+                return;
+            }
             string stroutput = "";
             try
             {
@@ -837,12 +842,19 @@ namespace BesiegeCustomScene
                 //List<Transform> list = new List<Transform>();
                 foreach (MyBlockInfo info in infoArray)
                 {
-                    Vector3 v = info.gameObject.GetComponent<Rigidbody>().worldCenterOfMass;
-                    float t = info.gameObject.GetComponent<Rigidbody>().mass;
-                    center.x += v.x;// * t;
-                    center.y += v.y;// * t;
-                    center.z += v.z; // * t;
-                    _weight += t;
+                    if (info != null && info.gameObject != null)
+                    {
+                        Vector3 v = info.gameObject.GetComponent<Rigidbody>().worldCenterOfMass;
+                        float t = info.gameObject.GetComponent<Rigidbody>().mass;
+                        center.x += v.x;// * t;
+                        center.y += v.y;// * t;
+                        center.z += v.z; // * t;
+                        _weight += t;
+                    }
+                    else
+                    {
+                        Debug.Log("Skipped an invalid block!");
+                    }
                 }
                 center.x /= infoArray.Length;
                 center.y /= infoArray.Length;
