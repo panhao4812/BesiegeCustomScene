@@ -1,12 +1,9 @@
-using spaar;
-using System;
-using System.Collections;
-using System.IO;
+using PluginManager.Plugin;
 using UnityEngine;
 
 namespace BesiegeCustomScene
 {
-
+    /*
     public class BesiegeModLoader : spaar.ModLoader.Mod
     {
         public override string Name { get { return "BesiegeCustomScene"; } }
@@ -32,6 +29,33 @@ namespace BesiegeCustomScene
         public override void OnUnload()
         {
             UnityEngine.Object.Destroy(temp);
-        }        
+        }          
     }  
+    //*/
+    [OnGameInit]
+    public class BesiegeModLoader : MonoBehaviour
+    {
+        public GameObject Scene;
+
+        string DisplayName = "Besiege Custom Scene";
+
+        string Version = "1.10.5";
+
+        public BesiegeModLoader() { }
+
+        private void Start()
+        {
+            Scene = new GameObject();
+            Scene.name = string.Format("{0} {1}", DisplayName, Version);
+            Scene.AddComponent<SceneUI>();
+            Scene.AddComponent<TimeUI>();
+            Scene.AddComponent<MeshMod>();
+            Scene.AddComponent<TriggerMod>();
+            Scene.AddComponent<SnowMod>();
+            Scene.AddComponent<CloudMod>();
+            Scene.AddComponent<WaterMod>();
+            Scene.AddComponent<Prop>();
+            UnityEngine.Object.DontDestroyOnLoad(Scene);
+        }
+    }
 }

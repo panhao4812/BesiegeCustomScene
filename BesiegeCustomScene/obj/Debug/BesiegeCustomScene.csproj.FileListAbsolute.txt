@@ -2,11 +2,29 @@ D:\我的文档\GitHub\BesiegeCustomScene\BesiegeCustomScene\bin\Debug\BesiegeCu
 D:\我的文档\GitHub\BesiegeCustomScene\BesiegeCustomScene\bin\Debug\BesiegeCustomScene.pdb
 D:\我的文档\GitHub\BesiegeCustomScene\BesiegeCustomScene\bin\Debug\Assembly-CSharp-firstpass.dll
 D:\我的文档\GitHub\BesiegeCustomScene\BesiegeCustomScene\bin\Debug\SpaarModLoader.dll
-C:\Users\Administrator\Documents\GitHub\BesiegeCustomScene\BesiegeCustomScene\obj\Debug\BesiegeCustomScene.dll
-C:\Users\Administrator\Documents\GitHub\BesiegeCustomScene\BesiegeCustomScene\obj\Debug\BesiegeCustomScene.pdb
 D:\Program Files (x86)\Besiege0.40\Besiege_Data\Mods\BesiegeCustomScene.dll
 D:\Program Files (x86)\Besiege0.40\Besiege_Data\Mods\BesiegeCustomScene.pdb
 D:\我的文档\GitHub\BesiegeCustomScene\BesiegeCustomScene\obj\Debug\BesiegeCustomScene.dll
 D:\我的文档\GitHub\BesiegeCustomScene\BesiegeCustomScene\obj\Debug\BesiegeCustomScene.pdb
 D:\Program Files (x86)\Besiege0.42\Besiege_Data\Mods\BesiegeCustomScene.dll
 D:\Program Files (x86)\Besiege0.42\Besiege_Data\Mods\BesiegeCustomScene.pdb
+C:\Users\Administrator\Documents\GitHub\BesiegeCustomScene\BesiegeCustomScene\bin\Debug\BesiegeCustomScene.dll
+C:\Users\Administrator\Documents\GitHub\BesiegeCustomScene\BesiegeCustomScene\bin\Debug\BesiegeCustomScene.pdb
+C:\Users\Administrator\Documents\GitHub\BesiegeCustomScene\BesiegeCustomScene\bin\Debug\Assembly-CSharp.dll
+C:\Users\Administrator\Documents\GitHub\BesiegeCustomScene\BesiegeCustomScene\bin\Debug\Assembly-UnityScript.dll
+C:\Users\Administrator\Documents\GitHub\BesiegeCustomScene\BesiegeCustomScene\bin\Debug\PluginManager.dll
+C:\Users\Administrator\Documents\GitHub\BesiegeCustomScene\BesiegeCustomScene\bin\Debug\UnityEngine.dll
+C:\Users\Administrator\Documents\GitHub\BesiegeCustomScene\BesiegeCustomScene\bin\Debug\DynamicText.dll
+C:\Users\Administrator\Documents\GitHub\BesiegeCustomScene\BesiegeCustomScene\bin\Debug\GameAnalytics.dll
+C:\Users\Administrator\Documents\GitHub\BesiegeCustomScene\BesiegeCustomScene\bin\Debug\UnityEngine.UI.dll
+C:\Users\Administrator\Documents\GitHub\BesiegeCustomScene\BesiegeCustomScene\bin\Debug\System.Threading.dll
+C:\Users\Administrator\Documents\GitHub\BesiegeCustomScene\BesiegeCustomScene\bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\Administrator\Documents\GitHub\BesiegeCustomScene\BesiegeCustomScene\bin\Debug\UnityEngine.Networking.dll
+C:\Users\Administrator\Documents\GitHub\BesiegeCustomScene\BesiegeCustomScene\bin\Debug\Open.Nat.dll
+C:\Users\Administrator\Documents\GitHub\BesiegeCustomScene\BesiegeCustomScene\bin\Debug\RakNetSwig.dll
+C:\Users\Administrator\Documents\GitHub\BesiegeCustomScene\BesiegeCustomScene\bin\Debug\Boo.Lang.dll
+C:\Users\Administrator\Documents\GitHub\BesiegeCustomScene\BesiegeCustomScene\bin\Debug\Mono.Data.Sqlite.dll
+C:\Users\Administrator\Documents\GitHub\BesiegeCustomScene\BesiegeCustomScene\bin\Debug\NATTraversalForUNET.dll
+C:\Users\Administrator\Documents\GitHub\BesiegeCustomScene\BesiegeCustomScene\bin\Debug\UnityEngine.xml
+C:\Users\Administrator\Documents\GitHub\BesiegeCustomScene\BesiegeCustomScene\obj\Debug\BesiegeCustomScene.dll
+C:\Users\Administrator\Documents\GitHub\BesiegeCustomScene\BesiegeCustomScene\obj\Debug\BesiegeCustomScene.pdb

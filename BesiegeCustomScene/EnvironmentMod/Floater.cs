@@ -148,7 +148,7 @@ namespace BesiegeCustomScene
             }
             catch (Exception exception)
             {
-                Debug.Log(exception.ToString());
+                GeoTools.Log(exception.ToString());
                 UnityEngine.Object.Destroy(this);
             }
         }

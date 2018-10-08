@@ -30,10 +30,10 @@ namespace BesiegeCustomScene
         {
             try
             {
-                //Debug.Log(Application.dataPath);
+                //GeoTools.Log(Application.dataPath);
                 if (!File.Exists(ScenePath + SceneName + ".txt"))
                 {
-                    Debug.Log("Error! Scene File not exists!");
+                    GeoTools.Log("Error! Scene File not exists!");
                     return;
                 }
                 StreamReader srd = File.OpenText(ScenePath + SceneName + ".txt");
@@ -172,13 +172,13 @@ namespace BesiegeCustomScene
                                     for (int i = start; i <= end; i++)
                                     {
                                         meshes[i].GetComponent<MeshRenderer>().material = new Material(GameObject.Find(chara[4]).GetComponent<Renderer>().material);
-                                        // Debug.Log(meshes[i].GetComponent<MeshRenderer>().material.shader.name);
+                                        // GeoTools.Log(meshes[i].GetComponent<MeshRenderer>().material.shader.name);
                                     }
                                 }
                                 catch (Exception ex)
                                 {
-                                    Debug.Log("Error! MaterialCopy Failed");
-                                    Debug.Log(ex.ToString());
+                                    GeoTools.Log("Error! MaterialCopy Failed");
+                                    GeoTools.Log(ex.ToString());
                                 }
                             }
                             else if (chara[3] == "materialPropcopy")
@@ -190,13 +190,13 @@ namespace BesiegeCustomScene
                                         int index = Convert.ToInt32(chara[4]);
                                         meshes[i].GetComponent<MeshRenderer>().material =
                                             gameObject.GetComponent<Prop>().MaterialTemp[index].GetComponent<Renderer>().material;
-                                        // Debug.Log(meshes[i].GetComponent<MeshRenderer>().material.shader.name);
+                                        // GeoTools.Log(meshes[i].GetComponent<MeshRenderer>().material.shader.name);
                                     }
                                 }
                                 catch (Exception ex)
                                 {
-                                    Debug.Log("Error! MaterialPropCopy Failed");
-                                    Debug.Log(ex.ToString());
+                                    GeoTools.Log("Error! MaterialPropCopy Failed");
+                                    GeoTools.Log(ex.ToString());
                                 }
                             }
                             else if (chara[3] == "castshadow" || chara[2] == "shadow")
@@ -387,12 +387,12 @@ namespace BesiegeCustomScene
                                 try
                                 {
                                     meshes[i].GetComponent<MeshRenderer>().material = new Material(GameObject.Find(chara[3]).GetComponent<Renderer>().material);
-                                    //  Debug.Log(meshes[i].GetComponent<MeshRenderer>().material.shader.name);
+                                    //  GeoTools.Log(meshes[i].GetComponent<MeshRenderer>().material.shader.name);
                                 }
                                 catch (Exception ex)
                                 {
-                                    Debug.Log("Error! MaterialCopy Failed");
-                                    Debug.Log(ex.ToString());
+                                    GeoTools.Log("Error! MaterialCopy Failed");
+                                    GeoTools.Log(ex.ToString());
                                 }
                             }
                             else if (chara[2] == "smaterialcopy")
@@ -403,8 +403,8 @@ namespace BesiegeCustomScene
                                 }
                                 catch (Exception ex)
                                 {
-                                    Debug.Log("Error! MaterialCopy Failed");
-                                    Debug.Log(ex.ToString());
+                                    GeoTools.Log("Error! MaterialCopy Failed");
+                                    GeoTools.Log(ex.ToString());
                                 }
                             }
                             else if (chara[2] == "materialPropcopy")
@@ -414,12 +414,12 @@ namespace BesiegeCustomScene
                                     int index = Convert.ToInt32(chara[3]);
                                     meshes[i].GetComponent<MeshRenderer>().material =
                                         gameObject.GetComponent<Prop>().MaterialTemp[index].GetComponent<Renderer>().material;
-                                    //     Debug.Log(meshes[i].GetComponent<MeshRenderer>().material.shader.name);
+                                    //     GeoTools.Log(meshes[i].GetComponent<MeshRenderer>().material.shader.name);
                                 }
                                 catch (Exception ex)
                                 {
-                                    Debug.Log("Error! MaterialPropCopy Failed");
-                                    Debug.Log(ex.ToString());
+                                    GeoTools.Log("Error! MaterialPropCopy Failed");
+                                    GeoTools.Log(ex.ToString());
                                 }
                             }
                             else if (chara[2] == "shader")
@@ -511,7 +511,7 @@ namespace BesiegeCustomScene
                                 Convert.ToSingle(chara[3]),
                                 Convert.ToSingle(chara[4]),
                                 Convert.ToSingle(chara[5]));
-                                //Debug.Log("meshes" + i.ToString() + ".loaction:" + meshes[i].transform.localPosition.ToString());
+                                //GeoTools.Log("meshes" + i.ToString() + ".loaction:" + meshes[i].transform.localPosition.ToString());
                             }
                             else if (chara[2] == "scale")
                             {
@@ -519,7 +519,7 @@ namespace BesiegeCustomScene
                                 Convert.ToSingle(chara[3]),
                                 Convert.ToSingle(chara[4]),
                                 Convert.ToSingle(chara[5]));
-                                //Debug.Log("meshes" + i.ToString() + ".scale:" + meshes[i].transform.localScale.ToString());
+                                //GeoTools.Log("meshes" + i.ToString() + ".scale:" + meshes[i].transform.localScale.ToString());
                             }
                             else if (chara[2] == "rotation")
                             {
@@ -560,12 +560,12 @@ namespace BesiegeCustomScene
                 }
                 srd.Close();
                 //   for (int i = 0; i < this.meshes.Length; i++){GeoTools.MeshFilt(ref this.meshes[i]);}
-                Debug.Log("ReadMeshObj Completed!");
+                GeoTools.Log("ReadMeshObj Completed!");
             }
             catch (Exception ex)
             {
-                Debug.Log("Error! ReadMeshObj Failed!");
-                Debug.Log(ex.ToString());
+                GeoTools.Log("Error! ReadMeshObj Failed!");
+                GeoTools.Log(ex.ToString());
                 return;
             }
         }
@@ -573,7 +573,7 @@ namespace BesiegeCustomScene
         {
             if (meshes == null) return;
             if (meshes.Length <= 0) return;
-            if (MeshSize > 0) Debug.Log("ClearMeshes");
+            if (MeshSize > 0) GeoTools.Log("ClearMeshes");
             for (int i = 0; i < meshes.Length; i++)
             {
                 UnityEngine.Object.Destroy(meshes[i]);
@@ -604,8 +604,8 @@ namespace BesiegeCustomScene
             }
             catch (System.Exception ex)
             {
-                Debug.Log("Error! LoadMesh Failed!");
-                Debug.Log(ex.ToString());
+                GeoTools.Log("Error! LoadMesh Failed!");
+                GeoTools.Log(ex.ToString());
             }
         }
         public void LoadMeshWithOutCastShadow()
@@ -632,8 +632,8 @@ namespace BesiegeCustomScene
             }
             catch (System.Exception ex)
             {
-                Debug.Log("Error! LoadMesh Failed!");
-                Debug.Log(ex.ToString());
+                GeoTools.Log("Error! LoadMesh Failed!");
+                GeoTools.Log(ex.ToString());
             }
         }
 

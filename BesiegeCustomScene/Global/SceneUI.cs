@@ -1,10 +1,7 @@
 ﻿//using System.Threading.Tasks;
-using spaar;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,7 +13,7 @@ namespace BesiegeCustomScene
         //UI
         private int _FontSize = 15;
         private Rect windowRect = new Rect(Screen.width * 0.05f, Screen.height * 0.908f, 585f, 50f);
-        private int windowID = spaar.ModLoader.Util.GetWindowID();
+        private int windowID = GeoTools.GetWindowID();
         private bool ShowGUI = true;
         private List<string> _ButtonName = new List<string>();
         private List<string> _SceneName = new List<string>();
@@ -207,14 +204,14 @@ namespace BesiegeCustomScene
                                 if (chara[2] == "OFF" )
                                 {
                                     Debug.Log("SSAO OFF");
-                                    OptionsMaster.SSAO = true;
-                                    FindObjectOfType<ToggleAO>().Set();
+                                    OptionsMaster.BesiegeConfig.ScreenSpaceAmbientOcclusion = true;
+                                   // FindObjectOfType<ToggleAO>().Set
                                 }
                                 else if (chara[2] == "ON"  )
                                 {
                                     Debug.Log("SSAO ON");
-                                    OptionsMaster.SSAO = false;
-                                    FindObjectOfType<ToggleAO>().Set();
+                                    OptionsMaster.BesiegeConfig.ScreenSpaceAmbientOcclusion = false;
+                                  //  FindObjectOfType<ToggleAO>().Set();
                                 }
 
                             }
@@ -258,12 +255,12 @@ namespace BesiegeCustomScene
         }
         void LoadScene(string SceneName)
         {
-            if (SceneManager.GetActiveScene().name != "2")
-            {
-                SceneManager.LoadScene("2", LoadSceneMode.Single);//打开level  
-            }
-            else
-            {
+           // if (SceneManager.GetActiveScene().name != "2")
+          //  {
+          //      SceneManager.LoadScene("2", LoadSceneMode.Single);//打开level  
+         //   }
+          //  else
+          //  {
                 HideFloorBig();
                 this.ReadScene(SceneName);
                 try { this.gameObject.GetComponent<MeshMod>().ReadScene(SceneName); } catch { }
@@ -271,16 +268,16 @@ namespace BesiegeCustomScene
                 try { this.gameObject.GetComponent<WaterMod>().ReadScene(SceneName); } catch { }
                 try { this.gameObject.GetComponent<CloudMod>().ReadScene(SceneName); } catch { }
                 try { this.gameObject.GetComponent<SnowMod>().ReadScene(SceneName); } catch { }
-            }
+         //   }
         }
         /// ///////////////////////////////////////
         void FixedUpdate()
         {
-            if (StatMaster.isSimulating && isSimulating == false)
+            if (StatMaster.levelSimulating && isSimulating == false)
             {
                 isSimulating = true; this.ShowGUI = false;
             }
-            else if (!StatMaster.isSimulating && isSimulating == true)
+            else if (!StatMaster.levelSimulating && isSimulating == true)
             {
                 isSimulating = false; this.ShowGUI = true;
             }
@@ -322,7 +319,7 @@ namespace BesiegeCustomScene
             GUILayout.BeginHorizontal(new GUILayoutOption[0]);
             for (int i = 0; i < _SceneName.Count; i++)
             {
-                if (GUILayout.Button(_ButtonName[i], style, new GUILayoutOption[0]) && !StatMaster.isSimulating)
+                if (GUILayout.Button(_ButtonName[i], style, new GUILayoutOption[0]) && !StatMaster.levelSimulating)
                 { LoadScene(_SceneName[i]); }
             }
             GUILayout.EndHorizontal();

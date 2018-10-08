@@ -15,7 +15,7 @@ namespace BesiegeCustomScene
         }
         void OnTriggerEnter(Collider other)
         {
-            if (StatMaster.isSimulating)
+            if (StatMaster.levelSimulating)
             {
                 if(TimeUI.TriggerIndex== this.Index-1) TimeUI.TriggerIndex++;
             }

@@ -40,14 +40,14 @@ namespace BesiegeCustomScene
                 GameObject ObjectTemp = (GameObject)Instantiate(GameObject.Find(ObjectName));
                 ObjectTemp.name = ObjectName + "Temp";
                 UnityEngine.Object.DontDestroyOnLoad(ObjectTemp);
-                Debug.Log("Get " + ObjectName + "Temp Successfully");
+                GeoTools.Log("Get " + ObjectName + "Temp Successfully");
                 ObjectTemp.SetActive(false);
                 return ObjectTemp;
             }
             catch (Exception ex)
             {
-                Debug.Log("Error! Get " + ObjectName + "Temp Failed");
-                Debug.Log(ex.ToString());
+                GeoTools.Log("Error! Get " + ObjectName + "Temp Failed");
+                GeoTools.Log(ex.ToString());
                 return null;
             }
         }
@@ -67,20 +67,23 @@ namespace BesiegeCustomScene
                         if (iteratorVariable1 != null)
                         {
                               string[] names = iteratorVariable1.GetAllAssetNames();
-                              for (int i = 0; i < names.Length; i++) { Debug.Log(names[i]); }
+                              for (int i = 0; i < names.Length; i++) { GeoTools.Log(names[i]); }
                         }
                     }
                     catch (Exception ex)
                     {
-                        Debug.Log("Error! assetBundle failed");
-                        Debug.Log(ex.ToString());
+                        GeoTools.Log("Error! assetBundle failed");
+                        GeoTools.Log(ex.ToString());
                     }
 
                 }
-                if (Isstart == 2 * t)
+                string startscenename = SceneManager.GetActiveScene().name;
+                //GeoTools.Log(startscenename);
+                if (startscenename == "TITLE SCREEN"&& Isstart==6*t)
                 {
+                    Isstart++;
                     StartedScene = SceneManager.GetActiveScene().name;
-                    GeoTools.OpenScene("TITLE SCREEN");
+                   // GeoTools.OpenScene("TITLE SCREEN");
                     CloudTemp = GetObjectInScene("CLoud");
                     ParticleSystemRenderer psr = CloudTemp.GetComponent<ParticleSystemRenderer>();
                     psr.receiveShadows = false;
@@ -95,7 +98,7 @@ namespace BesiegeCustomScene
                     CloudTemp.name = "CloudTemp";
                     DontDestroyOnLoad(CloudTemp);
                     CloudTemp.SetActive(false);
-                    Debug.Log("Get " + CloudTemp.name + " Successfully");
+                    GeoTools.Log("Get " + CloudTemp.name + " Successfully");
                 }
                 if (Isstart == 3 * t)
                 {
@@ -110,7 +113,7 @@ namespace BesiegeCustomScene
                     DontDestroyOnLoad(WMTemp);
                     WMTemp.SetActive(false);
                     this.MaterialTemp.Add(WMTemp);
-                    Debug.Log("Get " + WMTemp.name + " Successfully");
+                    GeoTools.Log("Get " + WMTemp.name + " Successfully");
                     }                   
                 }
 
@@ -135,7 +138,7 @@ namespace BesiegeCustomScene
                     UnityEngine.Object.DontDestroyOnLoad(WaterTemp);
                     WaterTemp.name = "WaterTemp";
                     WaterTemp.SetActive(false);
-                    Debug.Log("Get " + TileTemp.name + " Successfully");
+                    GeoTools.Log("Get " + TileTemp.name + " Successfully");
                 }
                 if (Isstart == 5 * t)
                 {
@@ -144,14 +147,14 @@ namespace BesiegeCustomScene
                     SnowTemp.name = "SnowTemp";
                     SnowTemp.SetActive(false);
                     UnityEngine.Object.DontDestroyOnLoad(SnowTemp);
-                    Debug.Log("Get " + SnowTemp.name + " Successfully");
+                    GeoTools.Log("Get " + SnowTemp.name + " Successfully");
                 }
             }
             catch (Exception ex)
             {
-                Debug.Log(ex.ToString());
+                GeoTools.Log(ex.ToString());
             }
-            if (Isstart <= 6 * t) Isstart++;
+            if (Isstart < 6 * t) Isstart++;
         }
     }
 }

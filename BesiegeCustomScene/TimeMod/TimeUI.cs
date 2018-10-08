@@ -1,9 +1,7 @@
-﻿using spaar.ModLoader;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace BesiegeCustomScene
 {
@@ -13,11 +11,12 @@ namespace BesiegeCustomScene
         ms = 1,
         mach = 2,
     };
+  
     public class TimeUI : UnityEngine.MonoBehaviour
     {
         private GameObject startingBlock;
         bool validBlock = false; bool isSimulating = false;
-        private int windowID = spaar.ModLoader.Util.GetWindowID();
+        private int windowID = GeoTools.GetWindowID();
         private int _accstep = 1;
         //private bool _mode = false;
         private Rect windowRect = new Rect(15f, 100f, 150f, 150f);
@@ -232,7 +231,9 @@ namespace BesiegeCustomScene
         {
             ReadUI();
             if (!EnableCommond) return;
-            Commands.RegisterCommand("VP_Help", (args, notUses) =>
+         //  
+         /*
+           GetComponent( ConsoleController).RegisterCommand("VP_Help", (args, notUses) =>
              {
                  Debug.Log("VP_GetCenter");
                  Debug.Log("VP_GetAssets");
@@ -276,6 +277,7 @@ namespace BesiegeCustomScene
                 }
                 return "\n";
             }, "Get Assets Names");
+            //*/
         }
         void DoWindow(int windowID)
         {
@@ -436,7 +438,7 @@ namespace BesiegeCustomScene
         void FixedUpdate()
         {
             if (!ShowGUI) return;
-            if (StatMaster.isSimulating && isSimulating == false)
+            if (StatMaster.levelSimulating && isSimulating == false)
             {
                 LoadBlock();
                 if (validBlock) { _Position = startingBlock.GetComponent<Rigidbody>().position; }
@@ -447,7 +449,7 @@ namespace BesiegeCustomScene
                 MTimer = "00:00:00";
                 Debug.Log("isSimulating:" + validBlock.ToString());
             }
-            else if (!StatMaster.isSimulating && isSimulating == true)
+            else if (!StatMaster.levelSimulating && isSimulating == true)
             {
                 _Distance = 0;
                 Distance = "0";

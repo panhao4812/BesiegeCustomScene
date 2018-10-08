@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -797,7 +795,7 @@ namespace BesiegeCustomScene
             Debug.Log(mat.shaderKeywords.Length);
             for (int i = 0; i < mat.shaderKeywords.Length; i++)
             {
-                Debug.Log(mat.shaderKeywords[i]);
+                Log(mat.shaderKeywords[i]);
             }
 
         }
@@ -807,7 +805,7 @@ namespace BesiegeCustomScene
             Debug.Log(shaders.Length);
             for (int i = 0; i < shaders.Length; i++)
             {
-                Debug.Log(shaders[i].shader.name);
+                Log(shaders[i].shader.name);
             }
 
         }
@@ -822,15 +820,15 @@ namespace BesiegeCustomScene
             }
             catch (Exception ex)
             {
-                Debug.Log("Error! assetBundle failed");
-                Debug.Log(ex.ToString());
+                Log("Error! assetBundle failed");
+                Log(ex.ToString());
             }
         }
         public static void GetCenter()
         {
-            if (StatMaster.isSimulating)
+            if (StatMaster.levelSimulating)
             {
-                Debug.Log("The method will not work if is simulating!");
+               Log("The method will not work if is simulating!");
                 return;
             }
             string stroutput = "";
@@ -853,7 +851,7 @@ namespace BesiegeCustomScene
                     }
                     else
                     {
-                        Debug.Log("Skipped an invalid block!");
+                       Log("Skipped an invalid block!");
                     }
                 }
                 center.x /= infoArray.Length;
@@ -863,23 +861,43 @@ namespace BesiegeCustomScene
             }
             catch (Exception ex)
             {
-                Debug.Log(ex.ToString());
+                Log(ex.ToString());
                 stroutput = "Could not get Center";
             }
-            Debug.Log(stroutput);
+           Log(stroutput);
         }
         public static void GetLevelInfo()
         {
             Scene scene1 = SceneManager.GetActiveScene();
-            Debug.Log("ActiveScene : " + scene1.rootCount.ToString() + "=>" + scene1.name);
-            Debug.Log("SceneCount : " + SceneManager.sceneCountInBuildSettings.ToString());
+            Log("ActiveScene : " + scene1.rootCount.ToString() + "=>" + scene1.name);
+            Log("SceneCount : " + SceneManager.sceneCountInBuildSettings.ToString());
+            /*
+            GameObject[] infoArray = UnityEngine.Object.FindObjectsOfType<GameObject>();
+            foreach (GameObject info in infoArray)
+            {
+                if (info != null)
+                {
+                    Log(info.name);
+                }             
+            }
+            */
         }
+        public static void Log(string str){        
+                System.IO.StreamWriter test2 = new System.IO.StreamWriter(UIPath + "test2.txt", true);
+                test2.WriteLine(str);
+                test2.Close();
+            }
         public static void OpenScene(string Scene)
         {
             if (SceneManager.GetActiveScene().name != Scene)
             {
                 SceneManager.LoadScene(Scene, LoadSceneMode.Single);//打开level  
             }
+        }
+        private static int currentWindowID = int.MaxValue;
+        public static int GetWindowID()
+        {
+            return currentWindowID--;
         }
         /*无用函数
         public static Mesh MeshScale(Mesh mesh, Vector3 v)
